@@ -8,7 +8,7 @@ MAINTAINER Gordeev Ilya <back22019@yandex.ru>
 RUN apt-get update && apt-get install -y postgresql postgresql-contrib nginx-extras
 
 # Копирование конфигурационных файлов Nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+ADD nginx.conf /etc/nginx/nginx.conf
 
 # Копирование конфигурационных файлов PostgreSQL
 COPY pg_hba.conf /etc/postgresql/13/main/pg_hba.conf
