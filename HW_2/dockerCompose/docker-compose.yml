@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  nginx:
+    image: nginx
+    ports:
+      - 8080:80
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+    networks:
+      - mynetwork
+
+  postgres:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+    environment:
+      - POSTGRES_PASSWORD=password
+
+volumes:
+  pgdata:
+
+networks:
+  mynetwork:
+    ipam:
+      config:
+        - subnet: 10.10.10.0/28
