@@ -10,6 +10,9 @@ services:
       - ./nginx/html:/usr/share/nginx/html
     networks:
       - mynetwork
+    links:
+      - postgres:new_db
+      - postgres:dev_db
 
   postgres:
     image: postgres
